@@ -3,14 +3,14 @@
   "private": "true",
   "dependencies": {
     "@hotwired/turbo-rails": "^7.1.1",
-    "@tailwindcss/forms": "^0.4.0",
-    "esbuild": "^0.14.14",
     "jquery": "^3.6.0",
     "stimulus": "^3.0.1",
     "stimulus_reflex": "3.5.0-pre8"
   },
   "devDependencies": {
     "@prettier/plugin-ruby": "^2.0.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "esbuild": "^0.14.14",
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
