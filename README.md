@@ -7,6 +7,7 @@ Simple demo showcasing how to toggle & autosave todos using Stimulus Reflex.
 
 * `bundle install`
 * `yarn install`
+* `bin/rails dev:cache`
 * `bin/rails s`
 * `foreman start -f Procfile.dev`
 
