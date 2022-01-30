@@ -10,12 +10,21 @@
     <%= javascript_include_tag "application/bundle", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="bg-slate-100">
-    <header class="bg-white border-b p-4">
-      <h1 class="font-bold text-lg">Stimulus Reflex Demo</h1>
+  <body class="bg-slate-100 text-sm">
+    <div id="notifications" class="fixed top-0 left-0 right-0 flex flex-col gap-2 items-center p-4 pointer-events-none" data-controller="notifications">
+      <template data-notifications-target="template">
+        <div class="bg-rose-500 p-3 rounded text-white shadow-lg pointer-events-auto" data-controller="notification" style="display: none">
+          {{message}}
+          <button class="text-rose-100 cursor-pointer hover:bg-white rounded-sm hover:text-rose-500 w-5 h-5 ml-5 inline-flex items-center justify-center" data-action="click->notification#close">⛌</button>
+        </div>
+      </template>
+    </div>
+    <header class="bg-white border-b py-4 px-8 flex gap-8 items-center">
+      <a class="font-bold text-lg" href="<%= root_url %>">Stimulus Reflex Demo</a>
+      <%= link_to 'Todos', todos_path, class: 'text-blue-500 hover:underline' %>
     </header>
     <main class="p-8">
-    <%= yield %>
+      <%= yield %>
     </main>
   </body>
 </html>

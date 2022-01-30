@@ -1,0 +1,32 @@
+<%= form_with(model: todo, html: { class: 'flex flex-col gap-4', data: ({ reflex: 'change->TodosReflex#save', sgid: todo.to_sgid.to_s, reflex_serialize_form: 'true' } unless todo.new_record?) }) do |form| %>
+  <% if todo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <ul>
+        <% todo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% unless todo.new_record? %>
+    <div id="<%= dom_id(todo, :saved_at) %>">
+      <%= render('shared/saved_at', model: todo) %>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col gap-2">
+    <%= form.label :description, class: 'block font-semibold' %>
+    <%= form.text_field :description, autofocus: true %>
+  </div>
+
+  <div class="py-2">
+    <hr />
+  </div>
+
+  <div>
+    <%= form.submit(class: 'bg-green-500 text-white rounded px-3 py-2 cursor-pointer') %>
+  </div>
+<% end %>

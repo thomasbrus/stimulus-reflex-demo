@@ -1,0 +1,18 @@
+<header class="flex justify-between items-baseline gap-4">
+  <h1 class="text-base font-bold">Todos</h1>
+  <%= link_to "+ New todo", new_todo_path, class: 'text-base text-blue-500 hover:underline' %>
+</header>
+
+<div class="bg-white border rounded-md shadow-sm mt-6 p-6">
+  <%= render 'tabs', counts: @todo_counts %>
+
+  <% if @todos.any? %>
+    <table class="w-full border-collapse mt-4">
+      <tbody>
+        <%= render @todos %>
+      </tbody>
+    </table>
+  <% else %>
+    <p class="text-gray-700 mt-6">No results found</p>
+  <% end %>
+</div>

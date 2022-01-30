@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :demos, only: [:show]
-
-  root "demos#show"
+  resources :todos, except: %i[show]
+  root 'todos#index'
 end

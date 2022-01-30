@@ -1,0 +1,9 @@
+<header class="flex items-baseline gap-4">
+  <%= link_to "Todos", todos_path, class: 'text-blue-500 hover:underline text-base' %>
+  <span>»</span>
+  <h1 class="text-base font-bold">New todo</h1>
+</header>
+
+<div class="bg-white border rounded-md shadow-sm mt-6 p-6">
+  <%= render "form", todo: @todo %>
+</div>
