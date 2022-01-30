@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stimulus Reflex Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application/bundle", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application/bundle", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class="bg-slate-100">
+    <header class="bg-white border-b p-4">
+      <h1 class="font-bold text-lg">Stimulus Reflex Demo</h1>
+    </header>
+    <main class="p-8">
+    <%= yield %>
+    </main>
+  </body>
+</html>
