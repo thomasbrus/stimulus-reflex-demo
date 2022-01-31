@@ -8,6 +8,9 @@
     <%= link_to todo.description, edit_todo_path(todo), class: ['text-blue-500 hover:underline', ('line-through text-gray-500' if todo.completed?)] %>
   </td>
   <td class="border-b p-2">
-    <%= l(todo.completed_at, format: :short) if todo.completed_at.present? %>
+    <%= tag.span(todo.todo_list.name, class: ('line-through text-gray-500' if todo.completed?)) if todo.todo_list.present? %>
+  </td>
+  <td class="border-b p-2">
+    <%= tag.span(todo.assignee.name, class: ('line-through text-gray-500' if todo.completed?)) if todo.assignee.present? %>
   </td>
 </tr>

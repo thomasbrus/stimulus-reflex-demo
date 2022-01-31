@@ -8,6 +8,12 @@
 
   <% if @todos.any? %>
     <table class="w-full border-collapse mt-4">
+      <thead class="text-left bg-gray-100">
+        <th class="border-b p-2"></th>
+        <th class="border-b p-2">Description</th>
+        <th class="border-b p-2">Todo list</th>
+        <th class="border-b p-2">Assignee</th>
+      </thead>
       <tbody>
         <%= render @todos %>
       </tbody>

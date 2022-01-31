@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_30_132924) do
+ActiveRecord::Schema.define(version: 2022_01_31_200722) do
+
+  create_table "assignees", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "todos", force: :cascade do |t|
     t.datetime "completed_at", precision: 6
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "todo_list_id"
+    t.integer "assignee_id"
+    t.index ["assignee_id"], name: "index_todos_on_assignee_id"
+    t.index ["todo_list_id"], name: "index_todos_on_todo_list_id"
   end
 
+  add_foreign_key "todos", "assignees"
+  add_foreign_key "todos", "todo_lists"
 end

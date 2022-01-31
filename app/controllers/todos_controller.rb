@@ -7,7 +7,7 @@ class TodosController < ApplicationController
 
   # GET /todos or /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.preload(:todo_list)
     @todo_counts = { all: @todos.count, active: @todos.not_completed.count, completed: @todos.completed.count }
     @todos = @todos.not_completed if params[:state] == 'active'
     @todos = @todos.completed if params[:state] == 'completed'
@@ -16,10 +16,19 @@ class TodosController < ApplicationController
   # GET /todos/new
   def new
     @todo = Todo.new
+    @todo_lists = TodoList.order(:name)
+
+    todo_list_id = params.fetch(:todo, {}).fetch(:todo_list_id, @todo.todo_list_id)
+    @assignees = Assignee.order(:name).for_todo_list(@todo_lists.find_by(id: todo_list_id))
   end
 
   # GET /todos/1/edit
-  def edit; end
+  def edit
+    @todo_lists = TodoList.order(:name)
+
+    todo_list_id = params.fetch(:todo, {}).fetch(:todo_list_id, @todo.todo_list_id)
+    @assignees = Assignee.order(:name).for_todo_list(@todo_lists.find_by(id: todo_list_id))
+  end
 
   # POST /todos or /todos.json
   def create
@@ -60,6 +69,6 @@ class TodosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def todo_params
-    params.require(:todo).permit(:description)
+    params.require(:todo).permit(:description, :todo_list_id, :assignee_id)
   end
 end

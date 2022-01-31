@@ -2,23 +2,21 @@
 
 Simple demo showcasing how to toggle & autosave todos using Stimulus Reflex.
 
-
 ### Instructions
 
-* `bundle install`
-* `yarn install`
-* `bin/rails dev:cache`
-* `bin/rails s`
-* `foreman start -f Procfile.dev`
-
+- `bundle install`
+- `yarn install`
+- `bin/rails dev:cache`
+- `bin/rails db:setup`
+- `bin/rails s`
+- `foreman start -f Procfile.dev`
 
 ### Source code
 
-
-* [`app/controllers/todos_controller.rb#L9-L14`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/controllers/todos_controller.rb#L9-L14)
-* [`app/reflexes/todos_reflex.rb`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/reflexes/todos_reflex.rb)
-* [`app/views/todos/_form.html.erb#L1`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/views/todos/_form.html.erb#L1)
-* [`app/views/todos/_todo.html.erb#L4`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/views/todos/_todo.html.erb#L4)
+- [`app/controllers/todos_controller.rb#L9-L14`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/controllers/todos_controller.rb#L9-L14)
+- [`app/reflexes/todos_reflex.rb`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/reflexes/todos_reflex.rb)
+- [`app/views/todos/_form.html.erb#L1`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/views/todos/_form.html.erb#L1)
+- [`app/views/todos/_todo.html.erb#L4`](https://github.com/thomasbrus/stimulus-reflex-demo/blob/main/app/views/todos/_todo.html.erb#L4)
 
 ### Screenshots
 

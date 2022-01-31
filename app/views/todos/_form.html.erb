@@ -1,4 +1,7 @@
-<%= form_with(model: todo, html: { class: 'flex flex-col gap-4', data: ({ reflex: 'change->TodosReflex#save', sgid: todo.to_sgid.to_s, reflex_serialize_form: 'true' } unless todo.new_record?) }) do |form| %>
+<% data = { reflex_serialize_form: 'true' } %>
+<% data = data.merge({ reflex: 'change->TodosReflex#save', sgid: todo.to_sgid.to_s }) unless todo.new_record? %>
+
+<%= form_with(model: todo, html: { class: 'flex flex-col gap-4', data: data }) do |form| %>
   <% if todo.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
@@ -21,6 +24,19 @@
     <%= form.label :description, class: 'block font-semibold' %>
     <%= form.text_field :description, autofocus: true %>
   </div>
+
+  <div class="flex flex-col gap-2">
+    <%= form.label :todo_list_id, class: 'block font-semibold' %>
+    <% data = { reflex: 'change', reflex_serialize_form: 'true' } %>
+    <%= form.collection_select :todo_list_id, @todo_lists, :id, :name, { include_blank: true }, { data: data } %>
+  </div>
+
+  <% if @assignees.present? %>
+    <div class="flex flex-col gap-2">
+      <%= form.label :assignee_id, class: 'block font-semibold' %>
+      <div class="flex gap-2 items-center"><%= form.collection_radio_buttons :assignee_id, @assignees, :id, :name, { include_blank: 'Select...' } %></div>
+    </div>
+  <% end %>
 
   <div class="py-2">
     <hr />

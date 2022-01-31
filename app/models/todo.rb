@@ -1,4 +1,7 @@
 class Todo < ApplicationRecord
+  belongs_to :todo_list, required: false
+  belongs_to :assignee, required: false
+
   scope :completed, -> { where.not(completed_at: nil) }
   scope :not_completed, -> { where(completed_at: nil) }
 

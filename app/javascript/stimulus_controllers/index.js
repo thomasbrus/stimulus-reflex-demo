@@ -7,5 +7,4 @@ import StimulusReflex from 'stimulus_reflex';
 application.register('notification', NotificationController);
 application.register('notifications', NotificationsController);
 
-StimulusReflex.debug = true;
-StimulusReflex.initialize(application, { controller: ApplicationController, isolate: true });
+StimulusReflex.initialize(application, { controller: ApplicationController, isolate: true, debug: true });
