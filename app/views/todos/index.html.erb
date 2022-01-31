@@ -8,8 +8,9 @@
 
   <div class="mt-4">
     <%= form_for(:filters) do |form| %>
-      <% data = { reflex: 'change', reflex_serialize_form: 'true' } %>
-      <%= form.select(:sort_direction, [['Ascending', 'asc'], ['Descending', 'desc']], {}, { data: data }) %>
+      <% sort_directions = [['Ascending', 'asc'], ['Descending', 'desc']] %>
+      <% data = { reflex: 'change->TodosReflex#apply_filter', reflex_serialize_form: 'true' } %>
+      <%= form.select(:sort_direction, sort_directions, { selected: @sort_direction }, { data: data }) %>
     <% end %>
   </div>
 
