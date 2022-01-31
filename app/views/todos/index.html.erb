@@ -6,6 +6,13 @@
 <div class="bg-white border rounded-md shadow-sm mt-6 p-6">
   <%= render 'tabs', counts: @todo_counts %>
 
+  <div class="mt-4">
+    <%= form_for(:filters) do |form| %>
+      <% data = { reflex: 'change', reflex_serialize_form: 'true' } %>
+      <%= form.select(:sort_direction, [['Ascending', 'asc'], ['Descending', 'desc']], {}, { data: data }) %>
+    <% end %>
+  </div>
+
   <% if @todos.any? %>
     <table class="w-full border-collapse mt-4">
       <thead class="text-left bg-gray-100">

@@ -8,6 +8,7 @@ class TodosController < ApplicationController
   # GET /todos or /todos.json
   def index
     @todos = Todo.preload(:todo_list)
+    @todos = @todos.order(description: params.fetch(:filters, {}).fetch(:sort_direction, 'asc'))
     @todo_counts = { all: @todos.count, active: @todos.not_completed.count, completed: @todos.completed.count }
     @todos = @todos.not_completed if params[:state] == 'active'
     @todos = @todos.completed if params[:state] == 'completed'
